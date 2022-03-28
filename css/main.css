@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#choose h1 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  text-align: center;
+  margin-left: 200px;
+  padding-bottom: 50px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#choose #selector {
+  text-align: center;
+  margin-right: 5px;
+}
+
+.battle {
+  position: relative;
+  display: block;
+  width: 70vw;
+  height: 500px;
+  margin-left: 50px;
+  padding: 10px;
+  background-image: url("/assets/battleBG.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.battle-comp--bar {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  background-image: url("/assets/computer-bar.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 40%;
+  height: 15%;
+}
+
+.battle-comp--platform {
+  position: absolute;
+  background-image: url("/assets/computer-platform.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 50%;
+  width: 40%;
+  right: 0;
+  height: 25%;
+  z-index: 1;
+}
+
+.battle-play--bar {
+  position: absolute;
+  bottom: 5%;
+  right: 0;
+  width: 40%;
+  height: 25%;
+  background-image: url("/assets/player-bar.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 2;
+}
+
+.battle-play--platform {
+  position: absolute;
+  width: 60%;
+  height: 15%;
+  left: 0;
+  bottom: 0;
+  background-image: url("/assets/player-platform.png");
+  background-size: contain;
+}
+
+.info--box {
+  display: inline-block;
+  position: relative;
+  margin-left: 50px;
+  width: 70vw;
+  height: 200px;
+  border: 10px solid black;
+  -webkit-box-shadow: 5px 5px 0px green, -5px -5px 0px green, 0px -5px 0px green, 5px -5px 0px green, -5px px 0px green;
+          box-shadow: 5px 5px 0px green, -5px -5px 0px green, 0px -5px 0px green, 5px -5px 0px green, -5px px 0px green;
+}
+
+.info--box-text {
+  font-size: x-large;
+}
+
+.attack-btn {
+  margin-left: 50px;
+}
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    <script src="js/state.js" defer></script>
+    <script src="/js/battle.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poke Battle</title>
+</head>
+<body>
+    <div class="battle">
+        <div class="battle-comp--bar">
+            <p class="battle-comp--bar-name" id="comp-name">Name</p>
+            <p class="battle-comp--bar-hp" id="comp-hp">00/00</p>
+        </div>
+        <div class="battle-play--bar">
+            <p class="battle-play--bar-name" id="play-name">Name</p>
+            <p class="battle-play--bar-health" id="play-hp">00/00</p>
+        </div>
+        <div class="battle-comp--platform"></div>
+        <div class="battle-play--platform"></div>
+    </div>
+
+   
+    <div class="info">
+        <div class="info--box">
+            <p class="info--box-text" id="info-data"></p>
+        </div>
+    </div>
+    <button class="attack-btn" id="attack" onclick="battle(play,comp)" >FIGHT</button>
+</body>
+</html>

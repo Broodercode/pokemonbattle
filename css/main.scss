@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#choose{
+    h1{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        text-align: center;
+        margin-left: 200px;
+        padding-bottom: 50px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+        
+}
+#selector{
+    text-align: center;
+    margin-right: 5px;
+}
+
+}
+@import 'home.scss';
+@import 'battle.scss';
