@@ -1,5 +1,3 @@
-// const pokemonList = require('./pokemonList')
-// import {pokemonList} from '/pokemonList'
 
 function getRndInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -20,7 +18,7 @@ pokemon02 = {
   currentHP: 50,
   attack: {
     name: "Hyper Delete",
-    damage: getRndInt(6, 12),
+    damage: 5,
   },
 };
 pokemon03 = {
@@ -29,23 +27,26 @@ pokemon03 = {
   currentHP: 50,
   attack: {
     name: "Super hit",
-    damage: getRndInt(6, 12),
+    damage: 5,
   },
 };
-//pokemon selection
+//pokemon selection, will not assign computer until function is run by pressing the fight button.
 let pokeArray = [pokemon01, pokemon02, pokemon03];
 var pv = Cookies.get("player-pokemon");
 var play = pokeArray[pv];
 pokeArray.splice(pv, 1);
 var comp = pokeArray[0];
 
- Cookies.set("computer-hp", computer.maxHP);
-  Cookies.set("player-hp", player.maxHP);
+Cookies.set("computer-hp", computer.maxHP);
+Cookies.set("player-hp", player.maxHP);
+
 //this function updates the hp values
 function updateHP(attack, currentHP) {
-  let newAttack = attack
-  getRndInt(newAttack-2,newAttack+2)
-  return currentHP - attack;
+  let newAttack = attack;
+  let finalDamage = getRndInt(newAttack - 2, newAttack + 2);
+  Cookies.set("damage-roll", finalDamage);
+  console.log(finalDamage);
+  return currentHP - finalDamage;
 }
 
 //main battle function
@@ -53,8 +54,6 @@ function battle(p, c) {
   let player = p;
   let computer = c;
 
-  
- 
   document.getElementById("play-name").innerHTML = `${player.name}`;
   document.getElementById("comp-name").innerHTML = `${computer.name}`;
   //hp check
@@ -62,14 +61,15 @@ function battle(p, c) {
     document.getElementById("attack").disabled = true;
     // computer.currentHP = Cookies.get('computer-hp')
 
-    
     computer.currentHP = updateHP(player.attack.damage, computer.currentHP);
     console.log(computer.currentHP);
 
+    let damage = Cookies.get("damage-roll");
     //writing data to screen
     document.getElementById(
       "info-data"
-    ).innerHTML = `${player.name} has attacked with ${player.attack.name} for ${player.attack.damage} damage`;
+    ).innerHTML = `${player.name} has attacked with ${player.attack.name} for ${damage} damage`;
+
 
     //updating HP
     document.getElementById(
@@ -77,15 +77,16 @@ function battle(p, c) {
     ).innerHTML = `${computer.currentHP} / ${computer.maxHP}`;
     console.log(computer, computer.currentHP);
 
+    //delaying text in info-box
     setTimeout(() => {
-      console.log(
-        `${computer.name} has attacked with ${computer.attack.name} for ${computer.attack.damage} damage`
-      );
-
+   
+        //calculate player damage
       player.currentHP = updateHP(computer.attack.damage, player.currentHP);
+    let compDamage = Cookies.get('damage-roll')
+      
       document.getElementById(
         "info-data"
-      ).innerHTML = `${computer.name} has attacked with ${computer.attack.name} for ${computer.attack.damage} damage`;
+      ).innerHTML = `${computer.name} has attacked with ${computer.attack.name} for ${compDamage} damage`;
       document.getElementById(
         "play-hp"
       ).innerHTML = `${player.currentHP} / ${player.maxHP}`;
@@ -94,6 +95,8 @@ function battle(p, c) {
 
     player = play;
     computer = comp;
+
+    //determining if the fight should continue
   } else if (player.currentHP <= 0) {
     console.log(`${player.name} has fainted`);
     document.getElementById(
